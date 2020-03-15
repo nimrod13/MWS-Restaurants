@@ -1,0 +1,20 @@
+{
+  "short_name": "Restaurants",
+  "name": "Udacity MWS Restaurants",
+  "icons": [
+    {
+      "src": "/images/icons/RestaurantIcon192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/images/icons/RestaurantIcon512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/?utm_source=a2hs",
+  "background_color": "#1a397a",
+  "display": "standalone",
+  "theme_color": "#1a397a"
+}
