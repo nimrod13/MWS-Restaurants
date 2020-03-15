@@ -24,6 +24,7 @@ class DBHelper {
                         {
                             keyPath: 'id'
                         });
+                        break;
                 case 1:
                     upgradeDb.createObjectStore('mws-reviews',
                         {
@@ -238,7 +239,7 @@ class DBHelper {
                 // Get all cuisines from all restaurants
                 const cuisines = restaurants.map((v, i) => restaurants[i].cuisine_type);
                 // Remove duplicates from cuisines
-                const uniqueCuisines = cuisines.filter((v, i) => cuisines.indexOf(v) === i)
+                const uniqueCuisines = cuisines.filter((v, i) => cuisines.indexOf(v) === i);
                 return uniqueCuisines;
             });
     }
@@ -277,7 +278,7 @@ class DBHelper {
 
             for (const el of document.querySelectorAll(".offline_mode")) {
                 el.parentNode.removeChild(el);
-            };
+            }
 
             if (data !== null) {
                 DBHelper.addReview(review);
