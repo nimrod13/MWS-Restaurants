@@ -1,2 +1,2 @@
-# MWS Restaurants
+# Udacity MWS Restaurants PWA
  

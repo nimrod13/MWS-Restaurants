@@ -23,7 +23,7 @@ fetchNeighborhoods = () => {
             fillNeighborhoodsHTML();
         })
         .catch(error => console.error(error));
-}
+};
 
 /**
  * Set neighborhoods HTML.
@@ -35,8 +35,8 @@ fillNeighborhoodsHTML = (neighborhoods = self.neighborhoods) => {
         option.innerHTML = neighborhood;
         option.value = neighborhood;
         select.append(option);
-    };
-}
+    }
+};
 
 /**
  * Fetch all cuisines and set their HTML.
@@ -48,7 +48,7 @@ fetchCuisines = () => {
             fillCuisinesHTML();
         })
         .catch(error => console.log(error));
-}
+};
 
 /**
  * Set cuisines HTML.
@@ -61,8 +61,8 @@ fillCuisinesHTML = (cuisines = self.cuisines) => {
         option.innerHTML = cuisine;
         option.value = cuisine;
         select.append(option);
-    };
-}
+    }
+};
 
 /**
  * Initialize leaflet map, called from HTML.
@@ -73,18 +73,17 @@ initMap = () => {
         zoom: 12,
         scrollWheelZoom: false
     });
-    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}',
-        {
-            mapboxToken: 'pk.eyJ1Ijoibmltcm9kMTMiLCJhIjoiY2prcTM4MmUyMGoydjN3czczZHpybjJ1MyJ9.j-gsu2FhTyIPaDm7exwuwQ',
-            maxZoom: 18,
-            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}', {
+        mapboxToken: 'pk.eyJ1Ijoibmltcm9kMTMiLCJhIjoiY2prcTM4MmUyMGoydjN3czczZHpybjJ1MyJ9.j-gsu2FhTyIPaDm7exwuwQ',
+        maxZoom: 18,
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
             '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
             'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-            id: 'mapbox.streets'
-        }).addTo(newMap);
+        id: 'mapbox.streets'
+    }).addTo(newMap);
 
     updateRestaurants();
-}
+};
 
 /**
  * Update page and map for current restaurants.
@@ -105,7 +104,7 @@ updateRestaurants = () => {
             fillRestaurantsHTML();
         })
         .catch(error => console.error(error));
-}
+};
 
 
 /**
@@ -124,7 +123,7 @@ resetRestaurants = (restaurants) => {
 
     self.markers = [];
     self.restaurants = restaurants;
-}
+};
 
 /**
  * Create all restaurants HTML and add them to the webpage.
@@ -134,10 +133,10 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
 
     for (const restaurant of restaurants) {
         ul.append(createRestaurantHTML(restaurant));
-    };
+    }
 
     addMarkersToMap();
-}
+};
 
 /**
  * Create restaurant HTML.
@@ -168,7 +167,7 @@ createRestaurantHTML = (restaurant) => {
     addDetailsBtn(div, restaurant);
 
     return li;
-}
+};
 
 addDetailsBtn = (div, restaurant) => {
     const details = document.createElement('button');
@@ -177,10 +176,10 @@ addDetailsBtn = (div, restaurant) => {
     details.setAttribute('aria-label', `View details of ${restaurant.name} restaurant.`);
     details.onclick = () => {
         window.location = DBHelper.urlForRestaurant(restaurant);
-    }
+    };
 
     div.append(details);
-}
+};
 
 addFavBtn = (div, restaurant) => {
     const favBtn = document.createElement('button');
@@ -197,7 +196,7 @@ addFavBtn = (div, restaurant) => {
     restaurant.is_favorite && favBtn.classList.add("mark-fav");
     favBtn.setAttribute('aria-label', restaurant.is_favorite ? 'remove from favorites' : 'add to favorites');
     div.append(favBtn);
-}
+};
 
 /**
  * Add markers for current restaurants to the map.
@@ -207,9 +206,10 @@ addMarkersToMap = (restaurants = self.restaurants) => {
         // Add marker to the map
         const marker = DBHelper.mapMarkerForRestaurant(restaurant, self.newMap);
         marker.on("click", onClick);
+
         function onClick() {
             window.location.href = marker.options.url;
         }
         self.markers.push(marker);
-    };
-} 
+    }
+};
